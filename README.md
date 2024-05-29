@@ -26,7 +26,7 @@ We are using Yolov8 to detect &amp; track objects which are players,refree,goalk
 2. Exception - It is an efficient way to raise errors and write our modular code using the exception handling way of writing code
 3. Utils - This can be setup later on as well, as per the necessity arises as you go through with the project.It ideally contains essential and reusable functions for which you may otherwise need to write redundant codes
 
-### Step 6 - Defining Workflow
+### Step 6 - Defining Workflow for Data Ingestion
 - We will follow the following workflow after we have setup the initial requirements and configuration till step 5:
     1. constants
     2. entity
@@ -57,4 +57,39 @@ We are using Yolov8 to detect &amp; track objects which are players,refree,goalk
 - #### In training_pipeline.py : 
     1. We have created a function that will take the config file and execute the function from data_ingestion.py that will return the path to downloaded data and unzipped data directory.
     
+### Step 11 - app.py
+- Here we can create an object of TrainingPipeline class and use the run method to execute our data ingestion
+
+### Step 12 - Workflow for Data Validation
+- We will follow the following workflow steps for Data Validation after we are done with the data ingestion process:
+    1. constants
+    2. entity
+    3. components
+    4. pipeline
+    5. app.py
+
+### Step 13 - Constants
+- Similar to what we had done for data ingestion, define data_validation_folder name, data_validation_status file name and a list of files that should be present after data ingestion process
+
+### Step 14 - Entity
+- in `config_entity.py` we create a class called DataValidationConfig : 
+    - `data_validation_dir` (str): The directory path for data validation.
+    - `valid_status_file_dir` (str): The directory path for storing validation status files.
+    - `required_file_list` (list): A list of required files for data validation.
+
+- in `artifacts_entity.py` we create a class called DataValidationArtifacts which stores the status of data validation process (True or False)
+
+### Step 15 - Components 
+- We create a class called DataValidation which takes data_ingestion_artifacts and data_validation_config info to get construted
+- We define a logic function where we validate the files we have received in the feature store of data ingestion artifacts
+- We create another function where we run the above validation function and return the data validation result in DataValidationArtifacts object type
+
+### Step 16 - Pipeline 
+- Here we update the config with data_validation_config 
+- Create a function that will run the last function from previous step and stores the result in the DataValidationArtifacts 
+- We just add the above function in the run_pipeline function for execution in our app.
+
+> No changes in the app.py 
+
+
 
