@@ -1,9 +1,9 @@
 import logging
 import os
-import datetime
+from datetime import datetime
 from from_root import from_root
 
-LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%M_%H_%S')}.log"     # name of the log subdirectory made of current timestamp value
+LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"    # name of the log subdirectory made of current timestamp value
 
 log_path = os.path.join(from_root(), 'log',LOG_FILE)    # Creating a path for 2 sub-directories called "log" > "LOG_FILE" 
 
