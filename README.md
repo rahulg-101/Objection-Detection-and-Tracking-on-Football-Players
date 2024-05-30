@@ -112,6 +112,15 @@ Similar steps that were followed in the Data Validation step
 
 > No changes in the app.py
 
+### Step 22 - Writing a HTML page
+- In the template>index.html, write a basic template of HTML page which takes an image as input & returns the predicted image.
 
+### Step 23 - Configuring the Port and HOST
+- In constant>application.py, specify the port and HOST for your application
+
+### Step 24 - App.py
+- Write a Flask app that is able to perform functions such as training, predicting on input image as well as on Live feed.
+
+## Congratulations!
 
 
