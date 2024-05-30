@@ -60,7 +60,7 @@ We are using Yolov8 to detect &amp; track objects which are players,refree,goalk
 ### Step 11 - app.py
 - Here we can create an object of TrainingPipeline class and use the run method to execute our data ingestion
 
-### Step 12 - Workflow for Data Validation
+### Step 12 - Workflow for Data_Validation
 - We will follow the following workflow steps for Data Validation after we are done with the data ingestion process:
     1. constants
     2. entity
@@ -68,11 +68,11 @@ We are using Yolov8 to detect &amp; track objects which are players,refree,goalk
     4. pipeline
     5. app.py
 
-### Step 13 - Constants
+### Step 13 - Data_Validation Constants
 - Similar to what we had done for data ingestion, define data_validation_folder name, data_validation_status file name and a list of files that should be present after data ingestion process
 - > The list of files can be different depending on the source of file, so you may need to change this list as per your dataset 
 
-### Step 14 - Entity
+### Step 14 - Data_Validation Entity
 - in `config_entity.py` we create a class called DataValidationConfig : 
     - `data_validation_dir` (str): The directory path for data validation.
     - `valid_status_file_dir` (str): The directory path for storing validation status files.
@@ -80,17 +80,38 @@ We are using Yolov8 to detect &amp; track objects which are players,refree,goalk
 
 - in `artifacts_entity.py` we create a class called DataValidationArtifacts which stores the status of data validation process (True or False)
 
-### Step 15 - Components 
+### Step 15 - Data_Validation Components 
 - We create a class called DataValidation which takes data_ingestion_artifacts and data_validation_config info to get construted
 - We define a logic function where we validate the files we have received in the feature store of data ingestion artifacts
 - We create another function where we run the above validation function and return the data validation result in DataValidationArtifacts object type
 
-### Step 16 - Pipeline 
+### Step 16 - Data_Validation Pipeline 
 - Here we update the config with data_validation_config 
 - Create a function that will run the last function from previous step and stores the result in the DataValidationArtifacts 
 - We just add the above function in the run_pipeline function for execution in our app.
 
 > No changes in the app.py 
+
+### Step 17 - Model_Trainer Workflow
+Same workflow will be followed as with the data validation step
+
+### Step 18 - Model_Trainer Constants
+- consists of model directory name, weight's name which is essentially the model we will run, epochs,batch size, and image size
+
+### Step 19 - Model_Trainer Entity
+- in `config_entity.py` we create a class called ModelTrainerConfig, here we are defining the path and storing the variables names
+    
+- in `artifacts_entity.py` we create a class called ModelTrainerArtifacts which stores the path of best trained model
+
+### Step 20 - Model_Trainer Components
+- We create a ModelTrainer class and add the ModelTrainerConfig to the class
+- We then create a function `initiate_model_trainer` that will train the Yolov8.pt model on our custom dataset and stores the best trained model in the `model_trainer_dir` directory.
+
+### Step 21 - Model_Trainer Pipeline
+Similar steps that were followed in the Data Validation step
+
+> No changes in the app.py
+
 
 
 
