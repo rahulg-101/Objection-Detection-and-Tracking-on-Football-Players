@@ -70,6 +70,7 @@ We are using Yolov8 to detect &amp; track objects which are players,refree,goalk
 
 ### Step 13 - Constants
 - Similar to what we had done for data ingestion, define data_validation_folder name, data_validation_status file name and a list of files that should be present after data ingestion process
+- > The list of files can be different depending on the source of file, so you may need to change this list as per your dataset 
 
 ### Step 14 - Entity
 - in `config_entity.py` we create a class called DataValidationConfig : 

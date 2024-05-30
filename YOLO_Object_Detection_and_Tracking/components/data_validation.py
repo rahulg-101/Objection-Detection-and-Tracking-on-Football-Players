@@ -56,13 +56,13 @@ class DataValidation:
             logging.info("Exited initiate_data_validation method of DataValidation class")
             logging.info(f"Data Validation artifacts : {data_validation_artifact}")
 
-            if status:
-                shutil.copy(self.data_ingestion_artifact.data_zip_file_path,os.getcwd())
-                """
-                The above line here is simply copying the data.zip file from data_ingestion_dir
-                to our root folder for faster access to data and shortening the path
-                but we will delete this later on !!
-                 """
+            # if status:
+            #     shutil.copy(self.data_ingestion_artifact.data_zip_file_path,os.getcwd())
+            #     """
+            #     The above line here is simply copying the data.zip file from data_ingestion_dir
+            #     to our root folder for faster access to data and shortening the path
+            #     but we will delete this later on !!
+            #      """
             return data_validation_artifact
         
         except Exception as e:

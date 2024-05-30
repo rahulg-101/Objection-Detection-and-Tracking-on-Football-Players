@@ -27,5 +27,17 @@ class DataValidationConfig:
 
     required_file_list = DATA_VALIDATION_ALL_REQUIRED_FILES
 
+@dataclass
+class ModelTrainerConfig:
+    model_trainer_dir = os.path.join(TrainingPipelineConfig.artifacts_dir,
+                                       MODEL_TRAINER_DIR_NAME)
+
+    weight_name = MODEL_TRAINER_PRETRAINED_WEIGHT_NAME
+
+    no_epochs = MODEL_TRAINER_NO_EPOCHS
+
+    batch_size = MODEL_TRAINER_BATCH_SIZE
+
+    imgsz = MODEL_TRAINER_IMAGE_SIZE                        
 
 

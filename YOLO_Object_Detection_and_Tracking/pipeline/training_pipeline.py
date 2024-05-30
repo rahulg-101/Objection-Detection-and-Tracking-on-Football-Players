@@ -2,14 +2,17 @@ import os,sys
 from YOLO_Object_Detection_and_Tracking.logger import logging
 from YOLO_Object_Detection_and_Tracking.exception import CustomException
 
+
 from YOLO_Object_Detection_and_Tracking.components.data_ingestion import DataIngestion
 from YOLO_Object_Detection_and_Tracking.components.data_validation import DataValidation
-
+from YOLO_Object_Detection_and_Tracking.components.model_trainer import ModelTrainer
 
 from YOLO_Object_Detection_and_Tracking.entity.config_entity import (DataIngestionConfig,
-                                                                     DataValidationConfig)
+                                                                     DataValidationConfig,
+                                                                     ModelTrainerConfig)
 from YOLO_Object_Detection_and_Tracking.entity.artifacts_entity import (DataIngestionArtifact,
-                                                                        DataValidationArtifact)
+                                                                        DataValidationArtifact,
+                                                                        ModelTrainerArtifacts)
 
 
 
@@ -17,6 +20,9 @@ class TrainingPipeline():
     def __init__(self) -> None:
         self.data_ingestion_config = DataIngestionConfig()
         self.data_validation_config = DataValidationConfig()
+        self.model_trainer_config = ModelTrainerConfig()
+        
+        
 
     def start_data_ingestion(self) -> DataIngestionArtifact:
         try:
@@ -58,7 +64,18 @@ class TrainingPipeline():
             raise CustomException(e,sys)
         
 
+    def start_model_trainer(self) -> ModelTrainerArtifacts:
+        try:
+            model_trainer = ModelTrainer(
+                model_trainer_config=self.model_trainer_config,
+                
+            )
 
+            model_trainer_artifact = model_trainer.initiate_model_trainer()
+            return model_trainer_artifact
+        
+        except Exception as e:
+            raise CustomException(e,sys)
 
 
 
@@ -69,6 +86,11 @@ class TrainingPipeline():
             data_ingestion_artifact = self.start_data_ingestion()
             data_validation_artifact = self.start_data_validation(
                 data_ingestion_artifact=data_ingestion_artifact)
+            if data_validation_artifact.validation_status == True:
+                model_trainer_artifact = self.start_model_trainer()
+
+            else:
+                raise Exception("Your data is not in correct format")
         except Exception as e:
             raise CustomException(e,sys)
         

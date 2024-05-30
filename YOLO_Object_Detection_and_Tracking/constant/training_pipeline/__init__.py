@@ -31,3 +31,17 @@ DATA_VALIDATION_ALL_REQUIRED_FILES = ["test",
                                     "README.dataset.txt",
                                     "README.roboflow.txt"]     # Look for files that are in this list
 
+
+"""
+Model trainer related consstant start with MODEL_TRAINER VAR Name
+"""
+
+MODEL_TRAINER_DIR_NAME = "model_trainer"    # Create model_trainer folder
+
+MODEL_TRAINER_PRETRAINED_WEIGHT_NAME = "yolov8n.pt"
+
+MODEL_TRAINER_NO_EPOCHS = 1
+
+MODEL_TRAINER_BATCH_SIZE = 16
+
+MODEL_TRAINER_IMAGE_SIZE = 640
