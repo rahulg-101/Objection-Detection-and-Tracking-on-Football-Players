@@ -1,6 +1,17 @@
 # Objection-Detection-and-Tracking-on-Football-Players
 We are using Yolov8 to detect &amp; track objects which are players,refree,goalkeeper and football itself in this project
 
+## How to run
+- clone the repository
+- Optional but recommended, create a conda/virtual environment
+- install required dependencies using `pip install -r requirements.txt`
+- To run gradio app, run the command `python app1.py`
+- To run flask app, run the command `python app.py`
+
+> **If you are using a conda environment and encountered an error something related to ffmpeg, run the command `conda install ffmpeg -c conda-forge`**
+
+## How to build the exact same project
+
 ### Step 0 - Booting Up
 - Create Github Repo > Clone repository > change directory to the directory cloned from previous step using `cd` command > Open VSCODE or your favorite editor 
 

@@ -105,4 +105,4 @@ def live_feed():
 
 if __name__ == "__main__":
     clApp = ClientApp()
-    app.run(host=APP_HOST, port=APP_PORT)
+    app.run(host=APP_HOST, port=APP_PORT)       # The app will run on http://127.0.0.1:8080/
