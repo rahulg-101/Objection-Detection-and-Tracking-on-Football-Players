@@ -1,6 +1,12 @@
 # Objection-Detection-and-Tracking-on-Football-Players
 We are using Yolov8 to detect &amp; track objects which are players,refree,goalkeeper and football itself in this project
 
+
+
+https://github.com/rahulg-101/Objection-Detection-and-Tracking-on-Football-Players/assets/123820143/ac82878f-3d31-4c97-aaba-6fd8ebad106a
+
+
+
 ## How to run
 - clone the repository
 - Optional but recommended, create a conda/virtual environment
